@@ -25,7 +25,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { initialUserConnected, initialCartArticles } =
+  const { initialUserConnected, initialCartArticles, initialUserIsAdmin } =
     await useUserLayoutData();
 
   return (
@@ -37,6 +37,7 @@ export default async function RootLayout({
         <UserStoreProvider
           initialUserConnected={initialUserConnected}
           initialCartArticles={initialCartArticles}
+          initialUserIsAdmin={initialUserIsAdmin}
         >
           <Header />
           {children}

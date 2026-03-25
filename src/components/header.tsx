@@ -6,7 +6,7 @@ import { useCheckout } from "@/app/hooks/useCheckout";
 import ThemeToggle from "@/components/theme/ThemeToggle";
 
 export default function Header() {
-  const { userConnected, cartArticles } = useUserStore();
+  const { userConnected, cartArticles, userIsAdmin } = useUserStore();
   const { checkout, isLoading } = useCheckout();
 
   return (
@@ -31,6 +31,14 @@ export default function Header() {
               className="btn-ghost btn-ghost-hover btn-nav-spacing radius-btn transition-colors"
             >
               Register
+            </a>
+          ) : null}
+          {userIsAdmin ? (
+            <a
+              href="/admin/article"
+              className="btn-ghost btn-ghost-hover btn-nav-spacing radius-btn transition-colors"
+            >
+              Admin
             </a>
           ) : null}
           {userConnected ? (
