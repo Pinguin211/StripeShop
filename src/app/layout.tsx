@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/components/header";
-import { headers } from "next/headers";
-import { auth } from "@/lib/auth";
+import { UserStoreProvider } from "@/store/userStore";
+import { useUserLayoutData } from "./hooks/useUserLayoutData";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -25,16 +25,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  let isConnected = false;
-
-  try {
-    const session = await auth.api.getSession({
-      headers: await headers(),
-    });
-    isConnected = Boolean(session?.user);
-  } catch {
-    isConnected = false;
-  }
+  const { initialUserConnected, initialCartArticles } =
+    await useUserLayoutData();
 
   return (
     <html
@@ -42,8 +34,13 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
-        <Header isConnected={isConnected} />
-        {children}
+        <UserStoreProvider
+          initialUserConnected={initialUserConnected}
+          initialCartArticles={initialCartArticles}
+        >
+          <Header />
+          {children}
+        </UserStoreProvider>
       </body>
     </html>
   );

@@ -1,4 +1,12 @@
-export default function Header({ isConnected }: { isConnected: boolean }) {
+"use client";
+
+import { PixelCartIcon } from "@/components/cart/PixelCartIcon";
+import { useUserStore } from "@/store/userStore";
+
+export default function Header() {
+  const { userConnected, cartArticles } = useUserStore();
+  const cartCount = cartArticles.length;
+
   return (
     <header className="sticky top-0 z-50 border-subtle glass-header">
       <nav className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-4 sm:px-6">
@@ -6,7 +14,14 @@ export default function Header({ isConnected }: { isConnected: boolean }) {
           StripeShop
         </a>
         <div className="flex items-center gap-2 text-small">
-          {!isConnected ? (
+          {userConnected ? (
+            <PixelCartIcon
+              count={cartCount}
+              className="w-8 h-8"
+              aria-label="Articles dans le panier"
+            />
+          ) : null}
+          {!userConnected ? (
             <a
               href="/register"
               className="btn-ghost btn-ghost-hover btn-nav-spacing radius-btn transition-colors"
@@ -14,7 +29,7 @@ export default function Header({ isConnected }: { isConnected: boolean }) {
               Register
             </a>
           ) : null}
-          {isConnected ? (
+          {userConnected ? (
             <a
               href="/logout"
               className="btn-primary btn-primary-hover btn-nav-spacing radius-btn transition-colors"

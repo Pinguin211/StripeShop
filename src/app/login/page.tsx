@@ -44,7 +44,7 @@ export default function LoginPage() {
 
       setSuccess("Connexion reussie. Redirection...");
       window.setTimeout(() => {
-        window.location.href = "/chat";
+        window.location.href = "/";
       }, 700);
     } catch (submitError) {
       setError(

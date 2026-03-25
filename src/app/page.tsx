@@ -1,10 +1,20 @@
 "use client";
 
 import ArticlesHomeUI from "@/components/article/articles-home-ui";
-import { useArticlesHome } from "@/hooks/useArticlesHome";
+import { useArticlesHome } from "@/app/hooks/useArticlesHome";
 
 export default function Home() {
-  const { articles, error, isPending, canLoadMore, loadMore } =
+  const {
+    articles,
+    error,
+    isPending,
+    canLoadMore,
+    loadMore,
+    addArticleToCart,
+    userConnected,
+    addingById,
+    inCartIdSet,
+  } =
     useArticlesHome();
 
   return (
@@ -33,10 +43,10 @@ export default function Home() {
         isPending={isPending}
         canLoadMore={canLoadMore}
         onLoadMore={loadMore}
-        onAddArticle={(article) => {
-          // Logique “ajout panier”/“ajout article” à brancher plus tard.
-          console.log("Add article", article.id);
-        }}
+        onAddArticle={addArticleToCart}
+        userConnected={userConnected}
+        addingById={addingById}
+        inCartIdSet={inCartIdSet}
       />
     </main>
   );

@@ -8,7 +8,7 @@ export type ListArticlesParams = {
   offset?: number;
 };
 
-export async function listArticles(
+export async function listArticlesActions(
   params: ListArticlesParams = {},
 ): Promise<Article[]> {
   return read.getMany(params);

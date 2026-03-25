@@ -16,5 +16,11 @@ export const read = {
       orderBy: [{ createdAt: "desc" }, { id: "asc" }],
     });
   },
+
+  async getById({ id }: { id: string }): Promise<Article | null> {
+    return prisma.article.findUnique({
+      where: { id },
+    });
+  },
 };
 

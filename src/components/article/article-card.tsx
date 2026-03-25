@@ -7,6 +7,8 @@ export type ArticleCardProps = {
   onAddArticle: () => void;
   addButtonLabel?: string;
   isAddDisabled?: boolean;
+  isAddLoading?: boolean;
+  isInCart?: boolean;
 };
 
 export function ArticleCard({
@@ -14,6 +16,8 @@ export function ArticleCard({
   onAddArticle,
   addButtonLabel = "Ajouter un article",
   isAddDisabled = false,
+  isAddLoading = false,
+  isInCart = false,
 }: ArticleCardProps) {
   return (
     <div className="radius-card border-subtle glass-card card-padding shadow-card">
@@ -60,10 +64,20 @@ export function ArticleCard({
         <button
           type="button"
           onClick={onAddArticle}
-          disabled={isAddDisabled}
+          disabled={isAddDisabled || isAddLoading}
+          aria-busy={isAddLoading}
           className="w-full mt-auto inline-flex items-center justify-center radius-input btn-primary btn-primary-hover btn-submit-spacing text-small font-medium transition disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {addButtonLabel}
+          {isAddLoading ? (
+            <>
+              <span className="mr-2 spinner" />
+              Chargement...
+            </>
+          ) : isInCart ? (
+            "Article dans le panier"
+          ) : (
+            addButtonLabel
+          )}
         </button>
       </div>
     </div>

@@ -10,6 +10,9 @@ export type ArticlesHomeUIProps = {
   canLoadMore: boolean;
   onLoadMore: () => void;
   onAddArticle: (article: Article) => void;
+  userConnected: boolean;
+  addingById: Record<string, boolean>;
+  inCartIdSet: Set<string>;
 };
 
 export default function ArticlesHomeUI({
@@ -19,6 +22,9 @@ export default function ArticlesHomeUI({
   canLoadMore,
   onLoadMore,
   onAddArticle,
+  userConnected,
+  addingById,
+  inCartIdSet,
 }: ArticlesHomeUIProps) {
   return (
     <div className="relative z-10 w-full max-w-5xl">
@@ -39,13 +45,20 @@ export default function ArticlesHomeUI({
 
         <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {articles.map((article) => (
+            (() => {
+              const isInCart = inCartIdSet.has(article.id);
+              return (
             <ArticleCard
               key={article.id}
               article={article}
               onAddArticle={() => onAddArticle(article)}
               addButtonLabel="Ajouter un article"
-              isAddDisabled={false}
+              isInCart={isInCart}
+              isAddDisabled={!userConnected || isInCart}
+              isAddLoading={Boolean(addingById[article.id])}
             />
+              );
+            })()
           ))}
         </section>
 
