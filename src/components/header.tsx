@@ -1,11 +1,13 @@
 "use client";
 
-import { PixelCartIcon } from "@/components/cart/PixelCartIcon";
+import CartHoverRecap from "@/components/cart/CartHoverRecap";
 import { useUserStore } from "@/store/userStore";
+import { useCheckout } from "@/app/hooks/useCheckout";
+import ThemeToggle from "@/components/theme/ThemeToggle";
 
 export default function Header() {
   const { userConnected, cartArticles } = useUserStore();
-  const cartCount = cartArticles.length;
+  const { checkout, isLoading } = useCheckout();
 
   return (
     <header className="sticky top-0 z-50 border-subtle glass-header">
@@ -14,11 +16,13 @@ export default function Header() {
           StripeShop
         </a>
         <div className="flex items-center gap-2 text-small">
+          <ThemeToggle />
           {userConnected ? (
-            <PixelCartIcon
-              count={cartCount}
-              className="w-8 h-8"
-              aria-label="Articles dans le panier"
+            <CartHoverRecap
+              articles={cartArticles}
+              onCheckout={checkout}
+              checkoutLabel={isLoading ? "Redirection..." : "Aller au paiement"}
+              isCheckoutDisabled={isLoading}
             />
           ) : null}
           {!userConnected ? (

@@ -1,0 +1,43 @@
+/*
+ * spacing.css — Espacements 8-bit Terminal
+ * Légèrement plus généreux pour compenser la police pixel plus dense.
+ */
+
+@layer utilities {
+  /* Boutons de navigation header */
+  [data-theme="hacker"] .btn-nav-spacing {
+    padding-left: 1rem;   /* px-4 */
+    padding-right: 1rem;
+    padding-top: 0.5rem;  /* py-2 */
+    padding-bottom: 0.5rem;
+  }
+  
+  /* Boutons de formulaire (submit) */
+  [data-theme="hacker"] .btn-submit-spacing {
+    padding-left: 1.5rem;   /* px-6 */
+    padding-right: 1.5rem;
+    padding-top: 0.75rem;   /* py-3 */
+    padding-bottom: 0.75rem;
+  }
+  
+  /* Bouton CTA large (retour 404) */
+  [data-theme="hacker"] .btn-cta-spacing {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  /* Padding interne des cards */
+  [data-theme="hacker"] .card-padding {
+    padding: 2rem; /* p-8 — plus d'espace pour la police pixel */
+  }
+  
+  /* Padding des inputs */
+  [data-theme="hacker"] .input-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+}

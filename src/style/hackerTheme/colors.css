@@ -1,0 +1,118 @@
+/*
+ * colors.css — Palette 8-bit Terminal (phosphore CRT)
+ * Thème : écran terminal vert phosphore sur fond noir
+ */
+
+@layer utilities {
+  /* ── Surfaces ───────────────────────────────────────────────── */
+  
+  [data-theme="hacker"] .surface-header {
+    background-color: #000000;
+    border-bottom: 1px solid #00ff41;
+    box-shadow: 0 0 12px rgba(0, 255, 65, 0.3);
+  }
+  
+  [data-theme="hacker"] .surface-card {
+    background-color: #000000;
+    border: 2px solid #00ff41;
+    box-shadow:
+      0 0 0 1px #003300,
+      0 0 20px rgba(0, 255, 65, 0.2),
+      inset 0 0 20px rgba(0, 255, 65, 0.03);
+  }
+  
+  [data-theme="hacker"] .surface-input {
+    background-color: #000000;
+  }
+  
+  [data-theme="hacker"] .surface-code {
+    background-color: #001a00;
+  }
+  
+  /* ── Textes ─────────────────────────────────────────────────── */
+  
+  [data-theme="hacker"] .text-primary {
+    color: #00ff41; /* vert phosphore */
+    text-shadow: 0 0 8px rgba(0, 255, 65, 0.8);
+  }
+  
+  [data-theme="hacker"] .text-secondary {
+    color: #00cc33;
+    text-shadow: 0 0 4px rgba(0, 204, 51, 0.5);
+  }
+  
+  [data-theme="hacker"] .text-muted {
+    color: #008f11;
+  }
+  
+  [data-theme="hacker"] .text-label {
+    color: #00cc33;
+  }
+  
+  [data-theme="hacker"] .text-code-inline {
+    color: #00ff41;
+    text-shadow: 0 0 6px rgba(0, 255, 65, 0.7);
+  }
+  
+  /* ── Boutons CTA (plein) ────────────────────────────────────── */
+  
+  [data-theme="hacker"] .btn-primary {
+    background-color: #00ff41;
+    color: #000000;
+    font-weight: 700;
+    text-shadow: none;
+  }
+  
+  [data-theme="hacker"] .btn-primary-hover:hover {
+    background-color: #000000;
+    color: #00ff41;
+    outline: 2px solid #00ff41;
+    box-shadow: 0 0 12px rgba(0, 255, 65, 0.6), inset 0 0 8px rgba(0, 255, 65, 0.1);
+  }
+  
+  /* ── Boutons Ghost (contour) ────────────────────────────────── */
+  
+  [data-theme="hacker"] .btn-ghost {
+    color: #00cc33;
+    border: 1px solid #00cc33;
+  }
+  
+  [data-theme="hacker"] .btn-ghost-hover:hover {
+    background-color: #00cc33;
+    color: #000000;
+    box-shadow: 0 0 10px rgba(0, 204, 51, 0.5);
+  }
+  
+  /* ── Feedbacks ──────────────────────────────────────────────── */
+  
+  [data-theme="hacker"] .feedback-error {
+    border-width: 2px;
+    border-color: #ff0000;
+    background-color: #1a0000;
+    color: #ff4444;
+    text-shadow: 0 0 6px rgba(255, 0, 0, 0.6);
+  }
+  
+  [data-theme="hacker"] .feedback-success {
+    border-width: 2px;
+    border-color: #00ff41;
+    background-color: #001a00;
+    color: #00ff41;
+    text-shadow: 0 0 6px rgba(0, 255, 65, 0.6);
+  }
+  
+  /* ── Accents décoratifs ─────────────────────────────────────── */
+  
+  [data-theme="hacker"] .accent-violet-halo {
+    background-color: rgba(0, 255, 65, 0.07);
+  }
+  
+  [data-theme="hacker"] .accent-cyan-halo {
+    background-color: rgba(0, 255, 200, 0.05);
+  }
+  
+  [data-theme="hacker"] .accent-emerald-dot {
+    background-color: #00ff41;
+    box-shadow: 0 0 10px #00ff41, 0 0 20px rgba(0, 255, 65, 0.5);
+  }
+}

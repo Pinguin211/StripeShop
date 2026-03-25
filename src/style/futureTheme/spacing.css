@@ -1,0 +1,43 @@
+/*
+ * spacing.css — Espacements Modernes
+ * Aéré, généreux et harmonieux
+ */
+
+@layer utilities {
+  /* Boutons de navigation header */
+  [data-theme="future"] .btn-nav-spacing {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  /* Boutons de formulaire (submit) */
+  [data-theme="future"] .btn-submit-spacing {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.875rem;
+    padding-bottom: 0.875rem;
+  }
+  
+  /* Bouton CTA large (retour 404) */
+  [data-theme="future"] .btn-cta-spacing {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  /* Padding interne des cards */
+  [data-theme="future"] .card-padding {
+    padding: 2.5rem; /* Espace généreux pour faire respirer la card */
+  }
+  
+  /* Padding des inputs */
+  [data-theme="future"] .input-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+}

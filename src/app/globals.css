@@ -1,75 +1,96 @@
+/* Fonts : Inter (moderne, sans-serif) */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 /* Google Font : Press Start 2P (police pixel 8-bit) */
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
-
 @import "tailwindcss";
-@import "../style/index.css";
 
-/* ── Thème 8-bit Terminal ───────────────────────────────────── */
+/* On importe les deux thèmes. L'activation est gérée par l'attribut data-theme sur l'élément html */
+@import "../style/hackerTheme/index.css";
+@import "../style/futureTheme/index.css";
+
+/* ── Initialisation des variables globales ────────────────── */
 :root {
+  /* Valeurs par défaut basées sur le hackerTheme */
   --background: #000000;
   --foreground: #00ff41;
+  --font-heading: "Press Start 2P", monospace;
+  --font-body: "Courier New", Courier, monospace;
+}
+
+[data-theme="future"] {
+  --background: #f8fafc; /* Slate-50 - background très clair */
+  --foreground: #111827; /* Gray-900 - texte très foncé */
+  --font-heading: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+[data-theme="hacker"] {
+  --background: #000000;
+  --foreground: #00ff41;
+  --font-heading: "Press Start 2P", monospace;
+  --font-body: "Courier New", Courier, monospace;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Press Start 2P", monospace;
-  --font-mono: "Courier New", Courier, monospace;
+  --font-sans: var(--font-body);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
-
-/* Pas de media dark : le thème terminal est toujours sombre */
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: "Courier New", Courier, monospace;
-  /* Légère teinte phosphore sur tout le fond */
-  background-image: radial-gradient(
-    ellipse 100% 80% at 50% 0%,
-    rgba(0, 255, 65, 0.04) 0%,
-    transparent 60%
-  );
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Overlay scanlines CRT sur toute la page */
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.10) 0px,
-    rgba(0, 0, 0, 0.10) 1px,
-    transparent 1px,
-    transparent 3px
-  );
+/* ── Gestion des scrollbars ────────────────── */
+
+/* hacker theme scrollbar */
+[data-theme="hacker"] ::-webkit-scrollbar {
+  width: 8px;
+}
+[data-theme="hacker"] ::-webkit-scrollbar-track {
+  background: #000000;
+  border-left: 1px solid #003300;
+}
+[data-theme="hacker"] ::-webkit-scrollbar-thumb {
+  background: #00cc33;
+  border: 1px solid #00ff41;
+}
+[data-theme="hacker"] ::-webkit-scrollbar-thumb:hover {
+  background: #00ff41;
+  box-shadow: 0 0 6px rgba(0, 255, 65, 0.8);
 }
 
-/* Sélection de texte en vert phosphore */
-::selection {
+/* future theme scrollbar */
+[data-theme="future"] ::-webkit-scrollbar {
+  width: 8px;
+}
+[data-theme="future"] ::-webkit-scrollbar-track {
+  background: transparent;
+}
+[data-theme="future"] ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+  border: 2px solid #f8fafc;
+}
+[data-theme="future"] ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ── Gestion de la sélection ────────────────── */
+
+[data-theme="hacker"] ::selection {
   background-color: #00ff41;
   color: #000000;
 }
 
-/* Scrollbar style terminal */
-::-webkit-scrollbar {
-  width: 8px;
+[data-theme="future"] ::selection {
+  background-color: #dbeafe;
+  color: #1d4ed8;
 }
-::-webkit-scrollbar-track {
-  background: #000000;
-  border-left: 1px solid #003300;
-}
-::-webkit-scrollbar-thumb {
-  background: #00cc33;
-  border: 1px solid #00ff41;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #00ff41;
-  box-shadow: 0 0 6px rgba(0, 255, 65, 0.8);
-}
+

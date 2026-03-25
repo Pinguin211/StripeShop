@@ -1,0 +1,99 @@
+/*
+ * typography.css — Style typographique Clean & Moderne
+ * Police : System fonts (Inter, San Francisco, Roboto)
+ * Corps de texte : lisible, aéré, élégant
+ */
+
+@layer utilities {
+  /* Surtitre — style discret et moderne */
+  [data-theme="future"] .text-eyebrow {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6b7280;
+  }
+  
+  /* Grand titre — imposant et clean */
+  [data-theme="future"] .text-heading-xl {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: #111827;
+  }
+  
+  /* Titre moyen — pages auth */
+  [data-theme="future"] .text-heading-lg {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(1.25rem, 3vw, 1.875rem);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+    color: #111827;
+  }
+  
+  /* Titre 404 */
+  [data-theme="future"] .text-heading-404 {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    color: #f3f4f6;
+    text-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Corps de texte */
+  [data-theme="future"] .text-body {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4b5563;
+  }
+  
+  /* Petit texte */
+  [data-theme="future"] .text-small {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #6b7280;
+  }
+  
+  /* Code inline */
+  [data-theme="future"] .text-code-block {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    padding: 1rem;
+    color: #1f2937;
+  }
+  
+  /* Gradient de texte — moderne et subtil (Bleu Cyan) */
+  [data-theme="future"] .text-gradient {
+    background-image: linear-gradient(
+      135deg,
+      #3b82f6 0%,
+      #06b6d4 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  /* Lien — discret et élégant */
+  [data-theme="future"] .link-underline {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-weight: 500;
+    color: #2563eb;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+  }
+  [data-theme="future"] .link-underline:hover {
+    color: #1d4ed8;
+    border-bottom-color: #1d4ed8;
+  }
+}

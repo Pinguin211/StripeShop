@@ -1,0 +1,118 @@
+/*
+ * colors.css — Palette Futuristic Light/Clean
+ * Thème : épuré, clair, moderne (Neo-Glassmorphism / Minimalist Sci-Fi)
+ */
+
+@layer utilities {
+  /* ── Surfaces ───────────────────────────────────────────────── */
+  
+  [data-theme="future"] .surface-header {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  [data-theme="future"] .surface-card {
+    background-color: #ffffff;
+    border: 1px solid #f0f0f0;
+    box-shadow:
+      0 10px 40px rgba(0, 0, 0, 0.04),
+      0 1px 3px rgba(0, 0, 0, 0.02);
+  }
+  
+  [data-theme="future"] .surface-input {
+    background-color: #fafafa;
+  }
+  
+  [data-theme="future"] .surface-code {
+    background-color: #f4f4f5;
+  }
+  
+  /* ── Textes ─────────────────────────────────────────────────── */
+  
+  [data-theme="future"] .text-primary {
+    color: #111827; /* Dark slate */
+  }
+  
+  [data-theme="future"] .text-secondary {
+    color: #4b5563; /* Medium gray */
+  }
+  
+  [data-theme="future"] .text-muted {
+    color: #9ca3af; /* Light gray */
+  }
+  
+  [data-theme="future"] .text-label {
+    color: #374151; /* Slate gray */
+    font-weight: 500;
+  }
+  
+  [data-theme="future"] .text-code-inline {
+    color: #2563eb; /* Modern blue */
+    background-color: #eff6ff;
+    border-radius: 4px;
+  }
+  
+  /* ── Boutons CTA (plein) ────────────────────────────────────── */
+  
+  [data-theme="future"] .btn-primary {
+    background-color: #111827; /* Dark button for high contrast */
+    color: #ffffff;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  [data-theme="future"] .btn-primary-hover:hover {
+    background-color: #374151;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* ── Boutons Ghost (contour) ────────────────────────────────── */
+  
+  [data-theme="future"] .btn-ghost {
+    color: #111827;
+    background-color: transparent;
+    border: 1px solid #d1d5db;
+    transition: all 0.2s ease;
+  }
+  
+  [data-theme="future"] .btn-ghost-hover:hover {
+    background-color: #f3f4f6;
+    border-color: #9ca3af;
+  }
+  
+  /* ── Feedbacks ──────────────────────────────────────────────── */
+  
+  [data-theme="future"] .feedback-error {
+    border-width: 1px;
+    border-color: #fca5a5;
+    background-color: #fef2f2;
+    color: #b91c1c;
+  }
+  
+  [data-theme="future"] .feedback-success {
+    border-width: 1px;
+    border-color: #86efac;
+    background-color: #f0fdf4;
+    color: #15803d;
+  }
+  
+  /* ── Accents décoratifs ─────────────────────────────────────── */
+  
+  [data-theme="future"] .accent-violet-halo {
+    background-color: rgba(139, 92, 246, 0.05); /* Subtle lilac */
+  }
+  
+  [data-theme="future"] .accent-cyan-halo {
+    background-color: rgba(6, 182, 212, 0.05); /* Subtle cyan */
+  }
+  
+  [data-theme="future"] .accent-emerald-dot {
+    background-color: #10b981;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+  }
+}
