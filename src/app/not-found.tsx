@@ -15,7 +15,7 @@ export default function NotFound() {
       <div className="pointer-events-none absolute inset-0 bg-grid" aria-hidden />
 
       <div className="relative z-10 flex max-w-lg flex-col items-center text-center">
-        <p className="mb-4 text-eyebrow text-muted">MongoNext</p>
+        <p className="mb-4 text-eyebrow text-muted">StripeShop</p>
         <p className="text-heading-404">404</p>
         <h1 className="mt-4 text-heading-lg text-gradient sm:text-4xl">
           Page introuvable

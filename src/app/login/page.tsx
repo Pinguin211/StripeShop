@@ -61,7 +61,7 @@ export default function LoginPage() {
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 py-16">
       <div className="pointer-events-none absolute inset-0 bg-halo-top" aria-hidden />
       <section className="relative z-10 w-full max-w-md radius-card border-subtle glass-card card-padding shadow-card">
-        <p className="text-eyebrow text-muted">MongoNext</p>
+        <p className="text-eyebrow text-muted">StripeShop</p>
         <h1 className="mt-3 text-heading-lg text-primary">Se connecter</h1>
         <p className="mt-2 text-small text-secondary">Accede a ton espace.</p>
 

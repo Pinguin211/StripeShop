@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../src/generated/prisma"
 }
 
@@ -72,7 +72,7 @@ model verification {
 }
 
 model article {
-  id          String  @id @default(cuid())
+  id          String  @id @default(dbgenerated("gen_random_uuid()"))
   name        String
   imageurl    String? // Optionnel, au cas où un article n'aurait pas d'image
   description String?
@@ -85,7 +85,7 @@ model article {
 }
 
 model cart {
-  id     String @id @default(cuid())
+  id     String @id @default(dbgenerated("gen_random_uuid()"))
   userId String @unique // @unique car un utilisateur ne possède qu'un seul panier actif
   user   user   @relation(fields: [userId], references: [id], onDelete: Cascade)
 

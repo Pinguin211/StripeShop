@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MongoNext — Hello World",
-  description: "Page d'accueil de l'application MongoNext",
+  title: "StripeShop — Hello World",
+  description: "Page d'accueil de l'application StripeShop",
 };
 
 export default async function RootLayout({
