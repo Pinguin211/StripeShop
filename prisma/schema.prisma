@@ -1,0 +1,96 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime? @db.Timestamptz(6)
+  refreshTokenExpiresAt DateTime? @db.Timestamptz(6)
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now()) @db.Timestamptz(6)
+  updatedAt             DateTime  @db.Timestamptz(6)
+  user                  user      @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([userId])
+}
+
+model session {
+  id        String   @id
+  expiresAt DateTime @db.Timestamptz(6)
+  token     String   @unique
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @db.Timestamptz(6)
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      user     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([userId])
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+model user {
+  id            String   @id
+  name          String
+  email         String   @unique
+  emailVerified Boolean
+  role          Role     @default(USER)
+  image         String?
+  createdAt     DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt     DateTime @default(now()) @db.Timestamptz(6)
+
+  account account[]
+  session session[]
+  cart    cart? // <-- NOUVELLE LIGNE : Relation 1-to-1 avec le panier
+}
+
+model verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime @db.Timestamptz(6)
+  createdAt  DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt  DateTime @default(now()) @db.Timestamptz(6)
+
+  @@index([identifier])
+}
+
+model article {
+  id          String  @id @default(cuid())
+  name        String
+  imageurl    String? // Optionnel, au cas où un article n'aurait pas d'image
+  description String?
+  prix        Float // Utilisation de Float pour les prix (ou Decimal pour plus de précision financière)
+
+  carts cart[] // Relation inverse : un article peut être dans plusieurs paniers
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @db.Timestamptz(6)
+}
+
+model cart {
+  id     String @id @default(cuid())
+  userId String @unique // @unique car un utilisateur ne possède qu'un seul panier actif
+  user   user   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  articles article[] // Relation "Many-to-Many" implicite avec les articles
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @db.Timestamptz(6)
+}

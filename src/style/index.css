@@ -1,0 +1,9 @@
+/*
+ * index.css — Barrel d'import du design system 8-bit Terminal
+ */
+
+@import "./colors.css";
+@import "./typography.css";
+@import "./borders.css";
+@import "./spacing.css";
+@import "./effects.css";

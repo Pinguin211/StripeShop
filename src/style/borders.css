@@ -1,0 +1,45 @@
+/*
+ * borders.css — Bordures 8-bit Terminal
+ * Style : arêtes vives, 0 radius, bordures phosphores avec glow
+ */
+
+/* ── Couleurs de bordure ─────────────────────────────────────── */
+
+/* Bordure subtile (header, séparateurs) */
+@utility border-subtle {
+  border-width: 1px;
+  border-color: #00ff41;
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.3);
+}
+
+/* Bordure input — style terminal */
+@utility border-input {
+  border-width: 1px;
+  border-color: #00cc33;
+  @variant focus-within {
+    border-color: #00ff41;
+    box-shadow: 0 0 0 2px rgba(0, 255, 65, 0.3);
+  }
+}
+
+/* ── Border-radius — TOUT À ZÉRO (style 8-bit bloc) ─────────── */
+
+@utility radius-btn {
+  border-radius: 0;
+}
+
+@utility radius-card {
+  border-radius: 0;
+}
+
+@utility radius-input {
+  border-radius: 0;
+}
+
+@utility radius-feedback {
+  border-radius: 0;
+}
+
+@utility radius-code {
+  border-radius: 0;
+}
